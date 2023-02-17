@@ -19,22 +19,23 @@ class PartRepository extends ServiceEntityRepository
         parent::__construct($registry, Part::class);
     }
 
-    // /**
-    //  * @return Part[] Returns an array of Part objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+     * @return Part[] Returns an array of Part objects
+      */
+    
+    public function findAllParts($id)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.make = :val')
             ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
+            ->orderBy('c.model', 'ASC')
+            ->orderBy('c.travelledDistance', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Part

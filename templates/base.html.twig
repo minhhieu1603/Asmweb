@@ -2,8 +2,53 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Trong Thinh{% endblock %}</title>
+        {% block stylesheets %}
+        <style>
+        
+
+        body {
+            background-image: url('image/background.jpg');
+            background-color: #023047;
+        }
+
+        table, tr, th {
+            
+            border: 1px solid;
+            text-align: center;
+        }
+
+        table {
+            
+            margin: auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        tr {
+            background: #219ebc;
+            align: center;
+        }
+
+        td {
+            background-color: #8ecae6;
+        }
+
+        button {
+            border-radius: 16px;
+            border-color: #a2d2ff;
+            background-color: #bde0fe;
+        }
+
+        
+        
+
+
+        </style>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>

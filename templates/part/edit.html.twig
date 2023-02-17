@@ -2,20 +2,17 @@
 
 {% block body %}
   <h1>Part edit</h1>
-
-  {{ form_start(edit_form) }}
-  {{ form_widget(edit_form) }}
-  <input type="submit" value="Edit" />
-  {{ form_end(edit_form) }}
-
   <ul>
-    <li>
-      <a href="{{ path('part_index') }}">Back to the list</a>
-    </li>
-    <li>
+    <ul>
+      {{ form_start(edit_form) }}
+      {{ form_widget(edit_form) }}
+      <button input type="submit" value="Edit">Edit</button>
+      {{ form_end(edit_form) }}
+        
+      <button type=button><a href="{{ path('part_index') }}">Back to the list</a></button>
       {{ form_start(delete_form) }}
-      <input type="submit" value="Delete">
+      <button input type="submit" value="Delete">Delete</button>
       {{ form_end(delete_form) }}
-    </li>
+    </ul>
   </ul>
-{% endblock %}
+{% endblock %

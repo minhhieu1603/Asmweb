@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customer</h1>
+    {% set totalPrice = 0 %}
+    {% for car in cars %}
+       {% for part in car.parts %}
+                {% set totalPrice = totalPrice + part.price %}
+       {% endfor %} 
+    {% endfor %}
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Bought cars count</th>
+            <th>Total spent money on cars</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.sales|length }}</td>
+                <td>{{ totalPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

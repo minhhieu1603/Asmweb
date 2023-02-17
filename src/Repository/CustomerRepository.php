@@ -20,15 +20,16 @@ class CustomerRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Customer[] Returns an array of Customer objects
-    //  */
+    // * @return Supplier[] Returns an array of Customer objects
+    // */
     /*
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
+            ->select('s.id, s.name, count(p.id) as numberOfParts')
+            ->innerJoin('App\Entity\Part', 'p', )
+            ->where('s.isImporter = 1')
+            ->groupBy('s.name')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -47,4 +48,17 @@ class CustomerRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findCarBoughtByCustomer($value)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+        "
+        SELECT c
+        FROM App\Entity\Sale s JOIN App\Entity\Car c
+        WITH s.customer= :val AND s.car=c.id
+         ")
+         ->setParameter('val',$value);
+        return $query->getResult(); 
+    }
 }

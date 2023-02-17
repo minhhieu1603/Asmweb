@@ -34,4 +34,32 @@ class CarController extends Controller
       'car' => $car,
     ));
   }
+
+  /**
+    * Finds and displays cars by make.
+    * 
+    * @Route("/cars/{make}", name="cars_by_make")
+    */
+    public function showByMakeAction($make)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $repo = $em->getRepository(Car::class);
+      $data = $repo->findByMake($make);
+      return $this->render('car/index.html.twig', array(
+        'cars' => $data,
+      ));
+    }
+
+    /**
+    * 
+    * @Route("/cars/(id)/parts", name="cars_parts")
+    */
+    public function showCarandParts($id)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $repo = $em->getRepository(Car::class);
+      $data = $repo->find($id);
+      return $this->render('car/showCarandParts.html.twig', array('car' => $data,
+      ));
+    }
 }

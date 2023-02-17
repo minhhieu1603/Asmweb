@@ -3,6 +3,12 @@
 {% block body %}
   <h1>Parts list</h1>
 
+  <ul>
+    <ul>
+      <button type=button><a href="{{ path('part_new') }}">Create a new part</a></button>
+    </ul>
+  </ul>
+
   <table>
     <thead>
     <tr>
@@ -11,6 +17,7 @@
       <th>Price</th>
       <th>Quantity</th>
       <th>Actions</th>
+      <th>More</th>
     </tr>
     </thead>
     <tbody>
@@ -20,24 +27,23 @@
         <td>{{ part.name }}</td>
         <td>{{ part.price }}</td>
         <td>{{ part.quantity }}</td>
+        <td>{{ part.supplier }}</td>
         <td>
           <ul>
-            <li>
-              <a href="{{ path('part_show', { 'id': part.id }) }}">show</a>
-            </li>
-            <li>
-              <a href="{{ path('part_edit', { 'id': part.id }) }}">edit</a>
-            </li>
+              <button type=button><a href="{{ path('part_show', { 'id': part.id }) }}">show</a></button>
+          </ul>
+          <ul>
+              <button type=button><a href="{{ path('part_edit', { 'id': part.id }) }}">edit</a></button>
           </ul>
         </td>
       </tr>
     {% endfor %}
     </tbody>
   </table>
-
+  
   <ul>
-    <li>
-{#      <a href="{{ path('part_new') }}">Create a new part</a>#}
-    </li>
+    <ul>
+      <button type=button><a href="{{ path('part_new') }}">Create a new part</a></button>
+    </ul>
   </ul>
 {% endblock %}

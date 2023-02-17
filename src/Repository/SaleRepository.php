@@ -47,4 +47,29 @@ class SaleRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findSalesDiscounted()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+        "
+        SELECT s
+        FROM App\Entity\Sale s 
+        WHERE s.discount > :val
+         ")
+         ->setParameter('val',0);
+        return $query->getResult(); 
+    }
+
+    public function findSalesGivenDiscount($value)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+        "
+        SELECT s
+        FROM App\Entity\Sale s 
+        WHERE s.discount = :val
+        ")
+         ->setParameter('val',$value);
+        return $query->getResult(); 
+    }
 }
